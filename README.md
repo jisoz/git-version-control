@@ -32,4 +32,4 @@ reset:  git log
 revert  when you finish push  and you want to revert last commit  git revert HEAD   git push
 
 
-#stash git stash   git stahs list git apply
+#stash git stash -a    git stash list git apply | git stash pop  (will remove from stash list)
