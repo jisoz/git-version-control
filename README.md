@@ -16,3 +16,14 @@ Consistency: Setting these configurations helps maintain consistent author infor
 git branch 
 git branch ....
 git switch ....
+git add  commit 
+git push origin develop
+
+
+working in other branch make file ...  git add git commit | switch to main git pull git merge other branch    git push
+
+#revert or reset ???
+<!-- if user already pushed commits to remote repo a revert is a nicer way to cancel out changes .
+otherwise if changes just in local you can use reset  -->
+
+
