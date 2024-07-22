@@ -12,7 +12,7 @@ Identification: Every commit in Git has information about who made the changes. 
 Global Configuration: Using the --global flag ensures that these settings apply to all repositories on your system. You can also set them on a per-repository basis without the --global flag if needed.
 Consistency: Setting these configurations helps maintain consistent author information across all your repositories, making it easier to track contributions and manage code changes. -->
 
-
+rename branch   git branch -m  old new  | delete branch  git branch -d ....
 git branch 
 git branch ....
 git switch ....
@@ -28,4 +28,7 @@ otherwise if changes just in local you can use reset  -->
 
 reset:  git log 
         git reset --hard [previous log id] 
+
+revert  when you finish push  and you want to revert last commit  git revert HEAD   git push
+
 
