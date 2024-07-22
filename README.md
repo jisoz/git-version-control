@@ -26,4 +26,6 @@ working in other branch make file ...  git add git commit | switch to main git p
 <!-- if user already pushed commits to remote repo a revert is a nicer way to cancel out changes .
 otherwise if changes just in local you can use reset  -->
 
+reset:  git log 
+        git reset --hard [previous log id] 
 
