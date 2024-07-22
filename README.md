@@ -13,3 +13,6 @@ Global Configuration: Using the --global flag ensures that these settings apply 
 Consistency: Setting these configurations helps maintain consistent author information across all your repositories, making it easier to track contributions and manage code changes. -->
 
 
+git branch 
+git branch ....
+git switch ....
