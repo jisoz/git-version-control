@@ -33,3 +33,16 @@ revert  when you finish push  and you want to revert last commit  git revert HEA
 
 
 #stash git stash -a    git stash list git apply | git stash pop  (will remove from stash list)
+
+
+
+# add existing project to a github repo 
+1- create the empty repo 
+2- in cmd in the project folder make sure that there is no .git folder  (Remove-Item -Recurse -Force .git)
+3- git init 
+4-  git commit -m "Initial commit"
+5- git remote add origin https://github.com/jisoz/jad-portfolio.git ( the repo that you created in step 1 )
+6- git push -U origin main  
+7  if by mistake puted the master branch you can delete it and merge contenets to main : 
+  git checkout main | git merge master --allow-unrelated-histories | (git branch -D master delete it locally ) 
+  to dlete it remotly make sure you ar ein main and make git push origin --delete master
