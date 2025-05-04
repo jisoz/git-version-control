@@ -1,3 +1,29 @@
+# Git
+open source distibuted version control system 
+![image](https://github.com/user-attachments/assets/7b328859-6e0d-46fd-90e7-cfaacdd8e288)
+ - git clone ....   (Copies a remote Git repository from a URL (e.g., GitHub, GitLab) onto your local machine)
+Git automatically:
+
+Creates a connection to the remote repository.
+
+Names this connection origin.
+
+So, origin is just a shortcut name for the URL of the remote repository.
+   
+- git add .  (Adds all changes in the current directory (and subdirectories) to the staging area , Staging area:
+A place where Git collects changes before committing them. Think of it like preparing your changes before making them permanent.)
+
+- git commit -m "test" (Takes the staged changes and records them in the repository as a commit with a message)
+- git push origin main (Sends your local commits to the main branch of the origin remote repository)
+- git pull origin main (Fetches the latest changes from the main branch on the origin remote and merges them into your current local branch)
+
+# github 
+![image](https://github.com/user-attachments/assets/c30e38e0-11d0-4c70-950e-06e696b8c56c)
+
+
+
+
+
 # git-version-control
 
 git config --global user.name ""
