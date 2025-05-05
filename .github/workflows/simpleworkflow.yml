@@ -1,0 +1,31 @@
+# name: workflow overview
+
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   my_self-hosted_job:
+#     name: my self hosted job
+#     runs-on: self-hosted
+#     steps:
+#       - name: step in a self-hosted runner
+#         id: selfHOstedId
+#         shell: cmd
+#         run: |
+#           echo this is a multiline comment
+#           echo and this job has been executed from my self-hosted runner
+#   a_simple_job:
+#     name: my simple job name
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: name of my step
+#         id: stepId
+#         run: echo "this is the first step from the first job"
+#       - name: step with another shell
+#         id: shellStep
+#         shell: python
+#         run: print("this step is using the python shell")
+    
