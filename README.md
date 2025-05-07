@@ -308,6 +308,148 @@ Modular: Break your CI/CD into clear steps
 Scalable: Use thousands of public or private actions
 
 Efficient: Reduces duplicated code in workflows
+
+## artifcats and cache
+![alt text](image-31.png)
+
+![alt text](image-32.png)
+
+![alt text](image-33.png)
+![alt text](image-34.png)
+
+
+## metadata 
+![alt text](image-35.png)
+
+![alt text](image-36.png)
+![alt text](image-37.png)
+
+### GitHub Actions: Custom JavaScript and Docker Actions
+
+## 1. Custom JavaScript Action
+
+### What is it?
+A custom JavaScript action is a GitHub Action written in JavaScript or TypeScript that runs directly in the GitHub Actions runner using Node.js.
+
+### 📁 File Structure
+
+my-js-action/
+├── action.yml
+├── index.js
+└── package.json
+
+yaml
+Copy
+Edit
+
+### 📄 action.yml
+
+name: "Greet User"
+description: "Greets a user by name"
+inputs:
+  username:
+    description: "Name of the user"
+    required: true
+outputs:
+  greeting:
+    description: "The greeting message"
+runs:
+  using: "node20"
+  main: "index.js"
+📄 index.js
+javascript
+Copy
+Edit
+const core = require('@actions/core');
+
+try {
+  const name = core.getInput('username');
+  const message = `Hello, ${name}! 👋`;
+  core.setOutput('greeting', message);
+  console.log(message);
+} catch (error) {
+  core.setFailed(`Action failed with error: ${error.message}`);
+}
+✅ Example Usage in Workflow
+yaml
+Copy
+Edit
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/my-js-action
+        with:
+          username: "Assaad"
+2. Custom Docker Container Action
+What is it?
+A custom Docker action runs inside a Docker container that you define. It's ideal when you need specific tools, isolation, or system-level control.
+
+📁 File Structure
+perl
+Copy
+Edit
+my-docker-action/
+├── action.yml
+├── Dockerfile
+└── entrypoint.sh
+📄 action.yml
+yaml
+Copy
+Edit
+name: "Docker Greet"
+description: "Greet from inside a Docker container"
+inputs:
+  username:
+    description: "User to greet"
+    required: true
+outputs:
+  message:
+    description: "Greeting message"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.username }}
+🐳 Dockerfile
+dockerfile
+Copy
+Edit
+FROM ubuntu:20.04
+
+RUN apt-get update && apt-get install -y curl
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+🖥️ entrypoint.sh
+bash
+Copy
+Edit
+#!/bin/bash
+echo "Hello, $1! 👋"
+echo "message=Hello, $1!" >> $GITHUB_OUTPUT
+✅ Example Usage in Workflow
+yaml
+Copy
+Edit
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/my-docker-action
+        with:
+          username: "Assaad"
+      - name: Print message
+        run: echo "Greeting: ${{ steps.greet.outputs.message }}"
+
+
+
+
+
 # Git Version Control
 
 ### Configuring Git
@@ -407,3 +549,58 @@ Efficient: Reduces duplicated code in workflows
    `git branch -D master`
 4. Delete `master` remotely:  
    `git push origin --delete master`
+
+
+
+
+# Continuous Integration
+
+## Unit testing
+![alt text](image-38.png)
+## Code Average
+![alt text](image-39.png)
+
+## code scanning 
+![alt text](image-40.png)
+Code scanning in GitHub is a security feature that automatically analyzes your code to detect vulnerabilities, bugs, and security issues before they reach production.
+
+It's part of GitHub Advanced Security, but basic scanning can also be used for free in public repositories.
+
+🔍 Key Features
+Scans code for security vulnerabilities, logic bugs, insecure functions, etc.
+
+Works with GitHub Actions or 3rd-party tools like CodeQL, SonarCloud, etc.
+
+Alerts appear in the "Security" tab of your repository.
+
+
+⚙️ How It Works
+You set up a workflow that runs a code scanning action like github/codeql-action.
+
+Example: Enable CodeQL scanning
+Go to Security > Code scanning alerts in your repo.
+
+Click "Set up code scanning".
+
+Choose CodeQL analysis.
+
+GitHub creates a .github/workflows/codeql.yml.
+
+
+## Dependabot
+![alt text](image-41.png)
+
+
+## understand code owners
+![alt text](image-42.png)
+
+## configure branch protection
+
+![alt text](image-43.png)
+
+## realease 
+
+
+## github container registrey 
+
+![alt text](image-44.png)

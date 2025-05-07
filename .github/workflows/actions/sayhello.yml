@@ -1,0 +1,39 @@
+# name: "Say Hello Action"
+# description: "Greets the user and returns the message"
+
+# inputs:
+#   username:
+#     description: "The name to greet"
+#     required: true
+
+# outputs:
+#   greeting:
+#     description: "The greeting message"
+
+# runs:
+#   using: "composite"
+#   steps:
+#     - name: Say Hello
+#       id: greet
+#       run: |
+#         echo "Hello ${{ inputs.username }}!"
+#         echo "greeting=Hello ${{ inputs.username }}!" >> $GITHUB_OUTPUT
+#       shell: bash
+
+
+# name: Demo Composite Action
+
+# on: [push]
+
+# jobs:
+#   greet:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: ./.github/actions/say-hello
+#         id: hello
+#         with:
+#           username: "Assaad"
+
+#       - name: Show Output
+#         run: echo "${{ steps.hello.outputs.greeting }}"

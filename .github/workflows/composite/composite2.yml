@@ -1,0 +1,64 @@
+# name: test composite actions
+
+# on:
+#   push:
+
+# jobs:
+#   test-c-a:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - run: ls
+#       - run: ls ./
+#       - run: pwd
+#       - uses: ./
+#         id: compoAct
+#         with:
+#           who-to-greet: tester
+#           number1: 2
+#           number2: 3
+#       - run: echo ${{ steps.compoAct.outputs.random-number }}
+#       - run: echo ${{ steps.compoAct.outputs.result }}
+
+
+##action.yml 
+
+# name: Hello World
+# description: Greet Someone
+# inputs:
+#   who-to-greet: 
+#     required: true
+#     default: world
+#   number1:
+#     required: true
+#     default: 0
+#   number2:
+#     required: true
+#     default: 0
+# outputs:
+#   random-number:
+#     value: ${{ steps.random-number-generator.outputs.random-number }}
+#   result:
+#     value: ${{ steps.sum-result.outputs.result }}
+# runs:
+#   using: composite
+#   steps:
+#     - run: echo Hello ${{ inputs.who-to-greet }}
+#       shell: bash
+#     - id: random-number-generator
+#       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+#       shell: bash
+#     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+#       shell: bash
+#     - run: chmod +x goodbye.sh
+#       shell: bash
+#     - run: goodbye.sh
+#       shell: bash
+#     - shell: bash
+#       id: sum-result
+#       run: |
+#         num1=${{ inputs.number1 }}
+#         num2=${{ inputs.number2 }}
+#         result=$((num1+num2))
+#         echo "result=$result" >> "$GITHUB_OUTPUT"
+      
